@@ -29,9 +29,9 @@ namespace LightningLawInterviewRound1.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> GetDish(UpdateDishDTO dish)
+        public async Task<IActionResult> UpdateDish(UpdateDishDTO dish)
         {
-            //TODO: Compete this route, and ensure the proper data is being returned.
+            //TODO: Complete this route, and ensure the proper data is being returned.
             var updated = await _dish.UpdateDish(dish);
             return Ok();
         }
