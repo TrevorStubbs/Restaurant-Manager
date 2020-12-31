@@ -12,7 +12,7 @@ You have just joined a team that is in the middle of a project. They only have t
 
 1. There are a couple of TODO's across the code base. Find and complete those tasks. 
 2. Write tests for this app, as many as you feel is needed. This can be a combination of tests (integration, unit, etc...). Test the services, and controllers. Remember, the incoming data, routes, and outgoing data cannot change. 
-3. All incomming data to the controllers will be DTOs. All Outgoing data from the controllers, to the client, will always be a DTO as well. 
+3. All incomming data to the controllers will be DTOs. All Outgoing data from the controllers, to the client, will be an HTTP response containing a DTO. 
 
 
 Your final solution will be evaluated by the development team. After a thorough review, you may be asked for follow up to discuss your progress. Be prepared to discuss your work, and continue working on this code base with additional routes and tests.
