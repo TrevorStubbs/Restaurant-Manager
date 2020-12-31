@@ -5,6 +5,7 @@
 3. Make an initial commit of an empty file with your name and start time commented on the top to start the time.
 4. Run the app locally (use your local DB). This app supports SQL Server, and is running off of .NET 3.1
 5. Submit your completed app through a public repository. This will allow us to pull down your code and run it locally ourselves.
+6. If you used any outside resources, please share what they were. 
 
 ## Requirements
 
