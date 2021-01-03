@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightningLawInterviewRound1", "LightningLawInterviewRound1\LightningLawInterviewRound1.csproj", "{C9AD7C47-0053-46DB-A5AA-E7E42FF04C14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LightningLawInterviewRound1", "LightningLawInterviewRound1\LightningLawInterviewRound1.csproj", "{C9AD7C47-0053-46DB-A5AA-E7E42FF04C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LightningLawInterviewRound1.UnitTests", "LightningLawInterviewRound1.UnitTests\LightningLawInterviewRound1.UnitTests.csproj", "{E258381A-8833-4BC1-916E-D2788242DF19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C9AD7C47-0053-46DB-A5AA-E7E42FF04C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9AD7C47-0053-46DB-A5AA-E7E42FF04C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9AD7C47-0053-46DB-A5AA-E7E42FF04C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E258381A-8833-4BC1-916E-D2788242DF19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E258381A-8833-4BC1-916E-D2788242DF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E258381A-8833-4BC1-916E-D2788242DF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E258381A-8833-4BC1-916E-D2788242DF19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
