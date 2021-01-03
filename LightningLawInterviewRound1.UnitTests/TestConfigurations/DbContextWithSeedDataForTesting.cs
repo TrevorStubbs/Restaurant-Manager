@@ -7,6 +7,9 @@ using System.Text;
 
 namespace LightningLawInterviewRound1.UnitTests.TestConfigurations
 {
+    /// <summary>
+    /// This class inherits from the System Under Test's DbContext and provides a place for the tester to put in data used for testing purposes. This data will be used to seed the in-memory Sqlite server used for testing.
+    /// </summary>
     public class DbContextWithSeedDataForTesting : LightningLawInterviewRound1Context
     {
         public DbContextWithSeedDataForTesting(DbContextOptions<LightningLawInterviewRound1Context> options) : base(options)
