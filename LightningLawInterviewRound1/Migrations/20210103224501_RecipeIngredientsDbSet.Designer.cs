@@ -3,14 +3,16 @@ using LightningLawInterviewRound1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LightningLawInterviewRound1.Migrations
 {
     [DbContext(typeof(LightningLawInterviewRound1Context))]
-    partial class LightningLawInterviewRound1ContextModelSnapshot : ModelSnapshot
+    [Migration("20210103224501_RecipeIngredientsDbSet")]
+    partial class RecipeIngredientsDbSet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

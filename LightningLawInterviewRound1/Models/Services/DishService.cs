@@ -38,6 +38,12 @@ namespace LightningLawInterviewRound1.Models.Services
 
             return dishes;
         }
+
+        /// <summary>
+        /// Updates a Dish and its recipes in the database.
+        /// </summary>
+        /// <param name="dish">Requires a complete DishDTO including all of its recipes.</param>
+        /// <returns>True: if successful</returns>
         public async Task<bool> UpdateDish(UpdateDishDTO dish)
         {
             // TODO: Complete this method and write a (few?) test(s) to confirm its functionality. 
@@ -45,7 +51,75 @@ namespace LightningLawInterviewRound1.Models.Services
             // A few things to remember with the update:
             // 1. When updating the dish, the recipe could change.
             // 2. A recipe consists of ingredients, which could also change
-            return false;
+
+            // Get the dish
+            // Update the items in the DB with the new DTO
+            // Update the dish with the new recipes
+            // Update the new recipes with new ingredients
+            // If successful return true
+            // If unsuccessful return false
+
+            // Get the Dish from the database
+            var dishFromDB = await _context.Dishes.Where(x => x.Name == dish.Name).FirstOrDefaultAsync();
+
+            if (dishFromDB == null)
+                return false;
+
+            // Update its basic information
+            dishFromDB.Name = dish.Name;
+            dishFromDB.DishType = dish.Type;
+
+            // Update the database
+            _context.Entry(dishFromDB).State = EntityState.Modified;
+
+            // Find all join entities between this dish and recipes
+            var deleteTheseRecipes = await _context.DishRecipes.Where(x => x.DishId == dishFromDB.Id).ToListAsync();
+                        
+            foreach (var recipe in deleteTheseRecipes)
+            {
+                // Delete those references
+                _context.Entry(recipe).State = EntityState.Deleted;            
+            }
+            
+            foreach(var recipe in dish.Recipes)
+            {
+                // Build a new DishRecpie join entity 
+                var newRecpieJoin = new DishRecipe 
+                { 
+                    DishId = dish.Id, 
+                    RecipeId = recipe.Id 
+                };
+
+                // Add that entity to the database 
+                _context.Entry(newRecpieJoin).State = EntityState.Added;
+
+                // Find all join entities between this Recipe and its ingredients
+                var deleteTheseIngredientsFromTheRecipe = await _context.RecipeIngredients.Where(x => x.RecipeId == recipe.Id).ToListAsync();
+
+                foreach (var ingredient in deleteTheseIngredientsFromTheRecipe)
+                {
+                    // Delete those references
+                    _context.Entry(ingredient).State = EntityState.Deleted;
+                }
+
+                foreach (var ingredient in recipe.Ingredients)
+                {
+                    // Build a new RecipeIngredient join entity
+                    var newIngredientJoin = new RecipeIngredients
+                    {
+                        RecipeId = recipe.Id,
+                        IngredientId = ingredient.Id
+                    };
+
+                    // Add that entity into the database
+                    _context.Entry(newIngredientJoin).State = EntityState.Added;
+                }
+            }
+
+            // Save All the Changes
+            await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task RemoveDish(int id)
