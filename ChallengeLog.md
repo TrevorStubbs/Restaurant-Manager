@@ -20,6 +20,9 @@
 - 16:15 - Microsoft provides a slick way of setting up integration tests. The integration tests uses xUnit's testing framework but we convert the '.NET.Sdk' into a '.Net.Sdk.Web' which makes the testing environment act like a Web host and server. 
     - It is all in memory and does not take any sockets to run.    
 
+## Running tests
+- 17:31 - I Used MOQ to help build a mock of IRecipe. Was able to get MOQ to return the expected data back to the service.
+
 
 ## References
 - In this project I used reference code from:
