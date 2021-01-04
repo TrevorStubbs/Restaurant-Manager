@@ -20,8 +20,8 @@ namespace LightningLawInterviewRound1.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<DishRecipe>().HasKey(e => new { e.DishId, e.RecipeId });
             modelBuilder.Entity<MenuDishes>().HasKey(e => new { e.MenuId, e.DishId });
-
-
+            // Applicant Added
+            modelBuilder.Entity<RecipeIngredients>().HasKey(e => new { e.RecipeId, e.IngredientId });
         }
 
         public DbSet<Dish> Dishes { get; set; }
@@ -30,6 +30,9 @@ namespace LightningLawInterviewRound1.Data
         public DbSet<Menu> Menus { get; set; }
         public DbSet<DishRecipe> DishRecipes { get; set; }
         public DbSet<MenuDishes> MenuDishes { get; set; }
+
+        // Applicant added
+        public DbSet<RecipeIngredients> RecipeIngredients { get; set; }
 
     }
 }

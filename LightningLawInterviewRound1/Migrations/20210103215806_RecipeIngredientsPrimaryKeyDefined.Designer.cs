@@ -3,14 +3,16 @@ using LightningLawInterviewRound1.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LightningLawInterviewRound1.Migrations
 {
     [DbContext(typeof(LightningLawInterviewRound1Context))]
-    partial class LightningLawInterviewRound1ContextModelSnapshot : ModelSnapshot
+    [Migration("20210103215806_RecipeIngredientsPrimaryKeyDefined")]
+    partial class RecipeIngredientsPrimaryKeyDefined
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,14 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Dishes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DishType = 3,
+                            Name = "Pie"
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.DishRecipe", b =>
@@ -49,6 +59,13 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasIndex("RecipeId");
 
                     b.ToTable("DishRecipes");
+
+                    b.HasData(
+                        new
+                        {
+                            DishId = 1,
+                            RecipeId = 1
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.Ingredient", b =>
@@ -67,6 +84,14 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Cost = 10,
+                            Name = "flour"
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.Menu", b =>
@@ -85,6 +110,14 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Menus");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Pie with Icecream",
+                            Type = 4
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.MenuDishes", b =>
@@ -100,6 +133,13 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasIndex("DishId");
 
                     b.ToTable("MenuDishes");
+
+                    b.HasData(
+                        new
+                        {
+                            MenuId = 1,
+                            DishId = 1
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.Recipe", b =>
@@ -115,6 +155,13 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Recipes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Pie Recipe"
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.RecipeIngredients", b =>
@@ -128,6 +175,13 @@ namespace LightningLawInterviewRound1.Migrations
                     b.HasKey("RecipeId", "IngredientId");
 
                     b.ToTable("RecipeIngredients");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipeId = 1,
+                            IngredientId = 1
+                        });
                 });
 
             modelBuilder.Entity("LightningLawInterviewRound1.Models.Entities.DishRecipe", b =>

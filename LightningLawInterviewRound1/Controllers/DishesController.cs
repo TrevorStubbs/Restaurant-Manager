@@ -33,7 +33,11 @@ namespace LightningLawInterviewRound1.Controllers
         {
             //TODO: Complete this route, and ensure the proper data is being returned.
             var updated = await _dish.UpdateDish(dish);
-            return Ok();
+            // This should be correct but it needs testing.
+            if (updated)
+                return Ok();
+
+            return BadRequest();
         }
 
     }
