@@ -6,7 +6,7 @@ using Xunit;
 namespace LightningLawInterviewRound1.UnitTests
 {
     /// <summary>
-    /// These tests are used to make sure the Testing environment is setup and running as expected.
+    /// These tests are used to make sure the Unit Testing environment is setup and running as expected.
     /// </summary>
     public class UnitTestEnvironmentTests : TestingDatabase
     {
