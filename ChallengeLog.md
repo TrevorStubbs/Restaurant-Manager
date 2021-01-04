@@ -20,6 +20,18 @@
 - 16:15 - Microsoft provides a slick way of setting up integration tests. The integration tests uses xUnit's testing framework but we convert the '.NET.Sdk' into a '.Net.Sdk.Web' which makes the testing environment act like a Web host and server. 
     - It is all in memory and does not take any sockets to run.    
 
+## Running tests
+- 17:31 - I Used MOQ to help build a mock of IRecipe. Was able to get MOQ to return the expected data back to the service.
+
+- 18:07 - Was able to get the CustomWebApplicationFactory built. But I ran out of time to debug it and use it for real testing. 
+
 
 ## References
 - In this project I used reference code from:
+    - "Integration tests in ASP.NET Core" - https://docs.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-5.0
+    - Nick Chapass - https://www.youtube.com/channel/UCrkPsvLGln62OMZRO6K-llg
+        - Getting started with Mocking using Moq in .NET (Core, Framework, Standard) 
+            - https://www.youtube.com/watch?v=9ZvDBSQa_so
+        - Integration testing | ASP.NET Core 5 REST API Tutorial 15
+            - https://www.youtube.com/watch?v=7roqteWLw4s
+
