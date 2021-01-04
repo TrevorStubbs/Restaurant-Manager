@@ -20,7 +20,8 @@ namespace LightningLawInterviewRound1.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<DishRecipe>().HasKey(e => new { e.DishId, e.RecipeId });
             modelBuilder.Entity<MenuDishes>().HasKey(e => new { e.MenuId, e.DishId });
-            // Applicant Added
+
+            // Applicant Added - A Composite Key must be defined for the RecipeIngredients join table.
             modelBuilder.Entity<RecipeIngredients>().HasKey(e => new { e.RecipeId, e.IngredientId });
         }
 
@@ -31,7 +32,7 @@ namespace LightningLawInterviewRound1.Data
         public DbSet<DishRecipe> DishRecipes { get; set; }
         public DbSet<MenuDishes> MenuDishes { get; set; }
 
-        // Applicant added
+        // Applicant added - there was no connection to the database with the RecipeIngredients entity.
         public DbSet<RecipeIngredients> RecipeIngredients { get; set; }
 
     }

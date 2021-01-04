@@ -11,6 +11,9 @@ using Xunit;
 
 namespace LightningLawInterviewRound1.UnitTests.Tests
 {
+    /// <summary>
+    /// This test suite runs tests on all of the methods of the 'DishService' service.
+    /// </summary>
     public class DishServiceUnitTests : TestingDatabase
     {
         private readonly Mock<IRecipe> _recipeMock = new Mock<IRecipe>();
