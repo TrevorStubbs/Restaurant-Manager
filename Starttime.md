@@ -5,3 +5,5 @@
 
 - Had to pause at 1:50
 - Started up again at 2:20
+
+- Time Limit last push at around 6:20pm
