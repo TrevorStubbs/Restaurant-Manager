@@ -31,4 +31,8 @@
     <Folder Include="TestConfigurations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\LightningLawInterviewRound1\LightningLawInterviewRound1.csproj" />
+  </ItemGroup>
+
 </Project>
