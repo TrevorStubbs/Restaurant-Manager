@@ -4,6 +4,7 @@
  */
 
 using LightningLawInterviewRound1.IntegrationTests.TestConfigurations;
+using LightningLawInterviewRound1.Models.DTOs;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
 using System.Collections.Generic;
@@ -34,17 +35,70 @@ namespace LightningLawInterviewRound1.IntegrationTests.Tests
             });
         }
 
-        // ============= Still needs to be fixed ============================
         [Fact]
         public async Task DishesController_CanGetADish()
         {
             // Arrange
 
             // Act
-            var response = await _client.GetAsync("/api/Dishes/");
+            var response = await _client.GetAsync("/api/Dishes/1");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task DishesController_CanUpdateADish()
+        {
+            // Arrange 
+            var peasIngredients = new List<IngredientDTO>();
+            peasIngredients.Add(new IngredientDTO
+            {
+                Id = 2,
+                Name = "Peas"
+            });
+
+            peasIngredients.Add(new IngredientDTO
+            {
+                Id = 3,
+                Name = "Butter"
+            });
+
+            var chickenIngredients = new List<IngredientDTO>() {
+                new IngredientDTO
+                {
+                    Id = 4,
+                    Name = "Chicken"
+                }
+            };
+
+            var recipes = new List<RecipeDTO>();
+
+            recipes.Add(new RecipeDTO
+            {
+                Id = 2,
+                Name = "Buttered Peas",
+                Ingredients = peasIngredients
+            });
+
+            recipes.Add(new RecipeDTO
+            {
+                Id = 3,
+                Name = "Grilled Chicken",
+                Ingredients = chickenIngredients
+            });
+
+            var dishToBeUpdated = new UpdateDishDTO
+            {
+                Id = 1,
+                Name = "Chicken Dinner",
+                Type = Models.DishType.MainCourse,
+                Recipes = recipes
+            };
+
+            // Act
+
+            // Assert
         }
     }
 }

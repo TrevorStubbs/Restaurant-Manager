@@ -25,6 +25,12 @@
 
 - 18:07 - Was able to get the CustomWebApplicationFactory built. But I ran out of time to debug it and use it for real testing. 
 
+# After Time Limit Work
+## DishesController Integration Test
+- Was able to get the DishesController Integration tests to work. I will now complete the unit tests for the DishService before I start building more integration tests.
+- Was able to successfully test the UpdateDish method in the DishService.cs service. Now I need to build the integration test for it. 
+    - There probably a few ways to do this. But I am thinking I need to pass in a json string into the body Http Message and have that be the parameter needed to make the PUT method work in the DishesController.
+
 
 ## References
 - In this project I used reference code from:

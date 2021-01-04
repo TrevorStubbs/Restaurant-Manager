@@ -36,7 +36,9 @@ namespace LightningLawInterviewRound1.Models.Services
 
         public async Task<List<RecipeDTO>> GetRecipesForDish(int dishId)
         {
-            var recipes = await GetRecipesForDish(dishId);
+            // Applicant - Here is an error that was causing a infinite loop. GetRecipesForDish was called instead of GetRecipes
+            
+            var recipes = await GetRecipes(dishId);
             List<RecipeDTO> allrecipes = new List<RecipeDTO>();
 
             foreach (var item in recipes)

@@ -24,16 +24,16 @@ namespace LightningLawInterviewRound1.UnitTests.Tests
         }
 
         [Fact]
-        public void CanGetADish()
+        public async Task CanGetADish()
         {
             // Arrange
             var dishId = 1;
             var recpieId = 1;
             var ingredientId = 1;
 
-            var ingrediants = new List<IngredientDTO>();
+            var ingredients = new List<IngredientDTO>();
 
-            ingrediants.Add(new IngredientDTO
+            ingredients.Add(new IngredientDTO
             {
                 Id = recpieId,
                 Name = "Sugar"
@@ -45,20 +45,84 @@ namespace LightningLawInterviewRound1.UnitTests.Tests
             {
                 Id = ingredientId,
                 Name = "Pumpkin Pie",
-                Ingredients = ingrediants
+                Ingredients = ingredients
             });
 
             var setupMock = _recipeMock.Setup(x => x.GetRecipesForDish(dishId)).ReturnsAsync(recipes);
 
             // Act
             var sut = BuildSut();
-            var response = sut.GetDish(dishId).Result;
+            var response = await sut.GetDish(dishId);
 
             // Assert
             Assert.NotNull(response);
             Assert.Equal("Pie", response.Name);
             Assert.Equal(recpieId, response.Recipes[0].Id);
             Assert.Equal(ingredientId, response.Recipes[0].Ingredients[0].Id);
+        }
+
+        [Fact]
+        public async Task CanUpdateADish()
+        {
+            // Arrange
+            var peasIngredients = new List<IngredientDTO>();
+            peasIngredients.Add(new IngredientDTO
+            {
+                Id = 2,
+                Name = "Peas"
+            });
+
+            peasIngredients.Add(new IngredientDTO
+            {
+                Id = 3,
+                Name = "Butter"
+            });
+
+            var chickenIngredients = new List<IngredientDTO>() {
+                new IngredientDTO
+                {
+                    Id = 4,
+                    Name = "Chicken"
+                }
+            };
+
+            var recipes = new List<RecipeDTO>();
+
+            recipes.Add(new RecipeDTO
+            {
+                Id = 2,
+                Name = "Buttered Peas",
+                Ingredients = peasIngredients
+            });
+
+            recipes.Add(new RecipeDTO
+            {
+                Id = 3,
+                Name = "Grilled Chicken",
+                Ingredients = chickenIngredients
+            });
+
+            var dishToBeUpdated = new UpdateDishDTO 
+            { 
+                Id = 1,
+                Name = "Chicken Dinner",
+                Type = Models.DishType.MainCourse,
+                Recipes = recipes
+            };
+
+            var setupMock = _recipeMock.Setup(x => x.GetRecipesForDish(dishToBeUpdated.Id)).ReturnsAsync(recipes);
+
+            // Act
+            var sut = BuildSut();
+            var response = await sut.UpdateDish(dishToBeUpdated);
+            var updatedDish = await sut.GetDish(dishToBeUpdated.Id);
+
+            // Assert
+            Assert.True(response);
+            Assert.Equal(dishToBeUpdated.Name, updatedDish.Name);
+            Assert.Equal(dishToBeUpdated.Type, updatedDish.Type);
+            Assert.Equal(dishToBeUpdated.Recipes[0].Name, updatedDish.Recipes[0].Name);
+            Assert.Equal(dishToBeUpdated.Recipes[0].Ingredients[0].Name, updatedDish.Recipes[0].Ingredients[0].Name);
         }
     }
 }

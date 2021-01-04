@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LightningLawInterviewRound1.Data;
+using LightningLawInterviewRound1.Models.Entities;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -48,8 +49,9 @@ namespace LightningLawInterviewRound1.IntegrationTests.TestConfigurations
                     var logger = scopedService.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
                     database.Database.EnsureCreated();
+                    SeedDataForTests.LoadDbWithSeedData(database);
                 }
             });
-        }
+        }        
     }
 }
