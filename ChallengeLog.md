@@ -21,7 +21,7 @@
     - It is all in memory and does not take any sockets to run.    
 
 ## Running tests
-- 17:31 - I Used MOQ to help build a mock of IRecipe. I still need to test the UpdateDish but I am going to switch to testing the GetDish Method on the controller.
+- 17:31 - I Used MOQ to help build a mock of IRecipe. Was able to get MOQ to return the expected data back to the service.
 
 
 ## References
