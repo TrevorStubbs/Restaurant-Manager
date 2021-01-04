@@ -70,7 +70,7 @@ namespace LightningLawInterviewRound1.Models.Services
             dishFromDB.DishType = dish.Type;
 
             // Update the database
-            _context.Entry(dishFromDB).State = EntityState.Modified;
+            _context.Entry(dishFromDB).State = EntityState.Modified;            
 
             // Find all join entities between this dish and recipes
             var deleteTheseRecipes = await _context.DishRecipes.Where(x => x.DishId == dishFromDB.Id).ToListAsync();
@@ -78,11 +78,19 @@ namespace LightningLawInterviewRound1.Models.Services
             foreach (var recipe in deleteTheseRecipes)
             {
                 // Delete those references
-                _context.Entry(recipe).State = EntityState.Deleted;            
+                _context.Entry(recipe).State = EntityState.Deleted;                
             }
             
             foreach(var recipe in dish.Recipes)
             {
+                var recipeEntity = new Recipe
+                {
+                    Id = recipe.Id,
+                    Name = recipe.Name
+                };
+
+                _context.Entry(recipeEntity).State = EntityState.Added;
+
                 // Build a new DishRecpie join entity 
                 var newRecpieJoin = new DishRecipe 
                 { 
@@ -92,14 +100,14 @@ namespace LightningLawInterviewRound1.Models.Services
 
                 // Add that entity to the database 
                 _context.Entry(newRecpieJoin).State = EntityState.Added;
-
+                
                 // Find all join entities between this Recipe and its ingredients
                 var deleteTheseIngredientsFromTheRecipe = await _context.RecipeIngredients.Where(x => x.RecipeId == recipe.Id).ToListAsync();
 
                 foreach (var ingredient in deleteTheseIngredientsFromTheRecipe)
                 {
                     // Delete those references
-                    _context.Entry(ingredient).State = EntityState.Deleted;
+                    _context.Entry(ingredient).State = EntityState.Deleted;                    
                 }
 
                 foreach (var ingredient in recipe.Ingredients)
@@ -112,12 +120,12 @@ namespace LightningLawInterviewRound1.Models.Services
                     };
 
                     // Add that entity into the database
-                    _context.Entry(newIngredientJoin).State = EntityState.Added;
+                    _context.Entry(newIngredientJoin).State = EntityState.Added;         
                 }
             }
 
             // Save All the Changes
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();            
 
             return true;
         }
