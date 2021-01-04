@@ -34,14 +34,13 @@ namespace LightningLawInterviewRound1.IntegrationTests.Tests
             });
         }
 
-        // ============= Still needs to be fixed ============================
         [Fact]
         public async Task DishesController_CanGetADish()
         {
             // Arrange
 
             // Act
-            var response = await _client.GetAsync("/api/Dishes/");
+            var response = await _client.GetAsync("/api/Dishes/1");
 
             // Assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);

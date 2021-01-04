@@ -1,4 +1,5 @@
 ﻿using LightningLawInterviewRound1.Data;
+using LightningLawInterviewRound1.Models.Interfaces;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,10 @@ namespace LightningLawInterviewRound1.UnitTests.TestConfigurations
     {
         private readonly SqliteConnection _connection;
         protected readonly DbContextWithSeedDataForTesting _db;
+
+        protected readonly IRecipe _recipe;
+        protected readonly IIngredient _ingredient;
+
 
         public TestingDatabase()
         {

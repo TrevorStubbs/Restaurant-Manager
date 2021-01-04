@@ -25,6 +25,10 @@
 
 - 18:07 - Was able to get the CustomWebApplicationFactory built. But I ran out of time to debug it and use it for real testing. 
 
+# After Time Limit Work
+## DishesController Integration Test
+- Was able to get the DishesController Integration tests to work. I will now complete the unit tests for the DishService before I start building more integration tests.
+
 
 ## References
 - In this project I used reference code from:
