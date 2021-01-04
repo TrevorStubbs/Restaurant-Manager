@@ -18,8 +18,8 @@ namespace LightningLawInterviewRound1.IntegrationTests.Tests
     public class DishesControllerIntegrationTests : IClassFixture<CustomWebApplicationFactory<Startup>>
     {      
         // Applicant's Thoughts - 
-        // This is how the guide has it. But In the future we might want to have a method call the start of the HttpClient.
-        // That will have clean client for each test but it might also make each test slower.
+        // This is how the guide has it. But In the future we might want to have a method call the start of the HttpClient at the beginning of each test.
+        // That will have clean client for each test but it might also make all the tests slower to run.
         // I am still exploring what is the better option.
 
         private readonly HttpClient _client;
@@ -34,6 +34,7 @@ namespace LightningLawInterviewRound1.IntegrationTests.Tests
             });
         }
 
+        // ============= Still needs to be fixed ============================
         [Fact]
         public async Task DishesController_CanGetADish()
         {

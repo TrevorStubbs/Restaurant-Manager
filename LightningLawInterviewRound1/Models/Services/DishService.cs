@@ -60,7 +60,7 @@ namespace LightningLawInterviewRound1.Models.Services
             // If unsuccessful return false
 
             // Get the Dish from the database
-            var dishFromDB = await _context.Dishes.Where(x => x.Name == dish.Name).FirstOrDefaultAsync();
+            var dishFromDB = await _context.Dishes.Where(x => x.Id == dish.Id).FirstOrDefaultAsync();
 
             if (dishFromDB == null)
                 return false;

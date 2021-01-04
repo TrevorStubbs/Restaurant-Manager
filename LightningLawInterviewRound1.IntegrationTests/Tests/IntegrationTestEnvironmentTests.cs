@@ -18,6 +18,7 @@ namespace LightningLawInterviewRound1.IntegrationTests
             _factory = factory;            
         }
 
+        // Calling a route that doesn't exist is intentional. This is a test on the testing environment not a specific system.
         [Fact]
         public async Task DishesController_GetDishEndpointReturnSOMETHING()
         {
