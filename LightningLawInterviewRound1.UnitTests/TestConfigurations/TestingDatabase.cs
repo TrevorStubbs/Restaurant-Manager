@@ -7,6 +7,9 @@ using System.Text;
 
 namespace LightningLawInterviewRound1.UnitTests.TestConfigurations
 {
+    /// <summary>
+    /// This class builds a new Sqlite server into memory and feeds it the DbContext needed to run the tests.
+    /// </summary>
     public class TestingDatabase : IDisposable
     {
         private readonly SqliteConnection _connection;
