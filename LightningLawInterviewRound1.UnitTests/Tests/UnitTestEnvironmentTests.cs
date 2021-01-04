@@ -8,7 +8,7 @@ namespace LightningLawInterviewRound1.UnitTests
     /// <summary>
     /// These tests are used to make sure the Testing environment is setup and running as expected.
     /// </summary>
-    public class DummyTests : TestingDatabase
+    public class UnitTestEnvironmentTests : TestingDatabase
     {
         [Fact]
         public async Task CanGetDishFromTheDatabase()
