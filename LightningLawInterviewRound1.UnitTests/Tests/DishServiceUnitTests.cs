@@ -24,7 +24,7 @@ namespace LightningLawInterviewRound1.UnitTests.Tests
         }
 
         [Fact]
-        public void CanGetADish()
+        public async Task CanGetADish()
         {
             // Arrange
             var dishId = 1;
@@ -52,13 +52,45 @@ namespace LightningLawInterviewRound1.UnitTests.Tests
 
             // Act
             var sut = BuildSut();
-            var response = sut.GetDish(dishId).Result;
+            var response = await sut.GetDish(dishId);
 
             // Assert
             Assert.NotNull(response);
             Assert.Equal("Pie", response.Name);
             Assert.Equal(recpieId, response.Recipes[0].Id);
             Assert.Equal(ingredientId, response.Recipes[0].Ingredients[0].Id);
+        }
+
+        [Fact]
+        public async Task CanUpdateADish()
+        {
+            // Arrange
+            var dishId = 1;
+            var recpieId = 1;
+            var ingredientId = 1;
+
+            var ingrediants = new List<IngredientDTO>();
+
+            ingrediants.Add(new IngredientDTO
+            {
+                Id = recpieId,
+                Name = "Sugar"
+            });
+
+            var recipes = new List<RecipeDTO>();
+
+            recipes.Add(new RecipeDTO
+            {
+                Id = ingredientId,
+                Name = "Pumpkin Pie",
+                Ingredients = ingrediants
+            });
+
+            var setupMock = _recipeMock.Setup(x => x.GetRecipesForDish(dishId)).ReturnsAsync(recipes);
+
+            // Act
+
+            // Assert
         }
     }
 }
